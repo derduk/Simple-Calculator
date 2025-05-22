@@ -1,0 +1,202 @@
+body {
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.calculator {
+  border: 1px solid black;
+  width: 400px;
+  padding: 0px 0px 20px 0px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.display {
+  border: 1px solid black;
+  margin: 20px;
+  padding: 15px;
+  border-radius: 20px;
+  font-size: large;
+  text-align: right;
+  background-color: #f8f8f8;
+  min-height: 30px;
+}
+
+.button-grid {
+  padding: 0px 25px 0px 25px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+button {
+  padding: 20px;
+  margin: 5px;
+  font-size: 20px;
+  border: none;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  border-radius: 20px;
+  font-weight: bolder;
+  color: white;
+  transition: transform 0.1s, background-color 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+.operator {
+  background-color: orange;
+}
+
+.operator:active {
+  background-color: rgb(152, 99, 0);
+}
+
+.equals {
+  background-color: green;
+}
+
+.equals:active {
+  background-color: rgb(0, 57, 0);
+}
+
+.number {
+  background-color: gray;
+}
+
+.number:active {
+  background-color: rgb(97, 97, 97);
+}
+
+.del {
+  background-color: red;
+}
+
+.del:active {
+  background-color: rgb(173, 0, 0);
+}
+
+.AC {
+  background-color: blue;
+}
+
+.AC:active {
+  background-color: rgb(0, 0, 146);
+}
+
+/* Media Queries for Responsive Design */
+
+/* Large tablets and small laptops */
+@media screen and (max-width: 992px) {
+  .calculator {
+    width: 350px;
+  }
+  
+  button {
+    padding: 18px;
+    font-size: 18px;
+  }
+}
+
+/* Tablets and large phones */
+@media screen and (max-width: 768px) {
+  .calculator {
+    width: 320px;
+  }
+  
+  button {
+    padding: 16px;
+    font-size: 16px;
+  }
+  
+  .display {
+    padding: 12px;
+    margin: 15px;
+  }
+  
+  .button-grid {
+    padding: 0px 20px 0px 20px;
+  }
+}
+
+/* Phones */
+@media screen and (max-width: 576px) {
+  .calculator {
+    width: 280px;
+    padding: 0px 0px 15px 0px;
+  }
+  
+  button {
+    padding: 14px;
+    font-size: 14px;
+    margin: 4px;
+    border-radius: 15px;
+  }
+  
+  .display {
+    padding: 10px;
+    margin: 12px;
+    border-radius: 15px;
+  }
+  
+  .button-grid {
+    padding: 0px 15px 0px 15px;
+    grid-gap: 2px;
+  }
+}
+
+/* Small phones */
+@media screen and (max-width: 360px) {
+  .calculator {
+    width: 240px;
+  }
+  
+  button {
+    padding: 12px;
+    font-size: 12px;
+    margin: 3px;
+    border-radius: 12px;
+  }
+  
+  .display {
+    padding: 8px;
+    margin: 10px;
+  }
+  
+  .button-grid {
+    padding: 0px 10px 0px 10px;
+  }
+}
+
+/* Portrait orientation adjustments */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  body {
+    align-items: flex-start;
+    padding-top: 10px;
+  }
+  
+  .calculator {
+    width: 450px;
+  }
+  
+  .button-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  
+  button {
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+  .display {
+    margin: 10px 20px;
+    padding: 10px;
+  }
+}
