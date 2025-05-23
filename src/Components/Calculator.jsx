@@ -37,34 +37,42 @@ function Calculator() {
   };
 
   // ✅ Keyboard support
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      const key = e.key;
+useEffect(() => {
+  const handleKeyDown = (e) => {
+    const key = e.key;
 
-      if (!isNaN(key)) {
-        handleNumber(key);
-      } else if (["+", "-", "*", "/", "×", "÷"].includes(key)) {
-        if (key === "*") handleOperator("×");
-        else if (key === "/") handleOperator("÷");
-        else handleOperator(key);
-      } else if (key === "Enter") {
-        handleEquals();
-      } else if (key === "=") {
-        handleEquals();
-      } else if (key === ".") {
-        handleDecimal();
-      } else if (key === "Backspace") {
-        handleDelete();
-      } else if (key === "c" || key === "C") {
-        handleClear();
-      } else if (key === "(" || key === ")") {
-        setDisplay((prev) => prev + key);
-      }
-    };
+    // Handle numbers
+    if (!isNaN(key)) return handleNumber(key);
 
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [display]);
+    // Handle operators
+    const operators = ["+", "-", "*", "/", "×", "÷"];
+    if (operators.includes(key)) {
+      const operator = key === "*" ? "×" : key === "/" ? "÷" : key;
+      return handleOperator(operator);
+    }
+
+    // Handle equals
+    if (key === "Enter" || key === "=") return handleEquals();
+
+    // Handle decimal point
+    if (key === ".") return handleDecimal();
+
+    // Handle delete
+    if (key === "Backspace") return handleDelete();
+
+    // Handle clear
+    if (key.toLowerCase() === "c") return handleClear();
+
+    // Handle parentheses
+    if (key === "(" || key === ")") {
+      return setDisplay((prev) => prev + key);
+    }
+  };
+
+  window.addEventListener("keydown", handleKeyDown);
+  return () => window.removeEventListener("keydown", handleKeyDown);
+}, [display]);
+
 
   const buttons = [
     { label: "AC", onClick: handleClear, className: "AC" },
